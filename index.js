@@ -24,20 +24,20 @@ function VSX(log, config) {
 VSX.prototype.getServices = function() {
   var availableServices = [];
 
-  this.powerService = new Service.Switch(this.name);
+  this.powerService = new Service.Lightbulb(this.name);
   availableServices.push(this.powerService);
 
   this.powerService.getCharacteristic(Characteristic.On)
     .on("set", this.setOn.bind(this))
     .on("get", this.getOn.bind(this));
 
-  this.speakerService = new Service.Speaker(this.speakerName);
+  /*this.speakerService = new Service.Speaker(this.speakerName);
   availableServices.push(this.speakerService);
 
   this.speakerService.getCharacteristic(Characteristic.Mute)
     .on("set", this.setMuted.bind(this))
-    .on("get", this.getMuted.bind(this));
-  this.speakerService.addCharacteristic(new Characteristic.Volume())
+    .on("get", this.getMuted.bind(this));*/
+  this.powerService.addCharacteristic(new Characteristic.Brightness)
     .on("set", this.setVolume.bind(this))
     .on("get", this.getVolume.bind(this));
 
