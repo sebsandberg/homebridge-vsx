@@ -279,8 +279,11 @@ VSX.prototype.setVolume = function(volume, callback) {
   // volume has to be padded with 0
   if (volume < 10) {
     volume = '00' + volume;
-  } else if (volume < 100) {
-    volume = '0' + volume + 30;
+  } else {
+    volume = volume + 30;
+    if (volume < 100) {
+      volume = '0' + volume;
+    }
   }
 
   var client = new net.Socket();
