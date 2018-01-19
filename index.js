@@ -274,13 +274,13 @@ VSX.prototype.getVolume = function(callback) {
 
 VSX.prototype.setVolume = function(volume, callback) {
 
-  // VOL000 = -80.5 dB, VOL100 = -30.5 dB, VOL185 = +12 dB
+  // VOL000 = -80.5 dB, VOL100 = -15.5 dB, VOL185 = +12 dB
 
   // volume has to be padded with 0
   if (volume < 10) {
     volume = '00' + volume;
   } else if (volume < 100) {
-    volume = '0' + volume;
+    volume = '0' + volume + 30;
   }
 
   var client = new net.Socket();
